@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="margin-bottom: 1rem;">Login</h2>
+<form method="post" class="form">
+    {% csrf_token %}
+    <div class="form-field">
+        <label for="username">Username</label><br>
+        <input type="text" name="username" required>
+    </div>
+    <div class="form-field">
+        <label for="password">Password</label><br>
+        <input type="password" name="password" required>
+    </div>
+    {% if form.errors %}
+        <div class="form-errors">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <button type="submit" class="btn">Login</button>
+</form>
+
+<style>
+    .form { max-width: 400px; margin: 0 auto; }
+    .form-field { margin-bottom: 1rem; }
+    input { width: 100%; padding: 0.5rem; font-size: 1rem; }
+    .form-errors { color: red; margin-bottom: 1rem; }
+</style>
+{% endblock %}

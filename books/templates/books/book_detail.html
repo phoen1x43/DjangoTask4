@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ book.title }}</h2>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>Date:</strong> {{ book.publication_date }}</p>
+<p>{{ book.description }}</p>
+<img src="{{ book.cover.url }}" style="max-width: 300px;">
+
+{% if user == book.owner %}
+    <p>
+        <a href="{% url 'edit_book' book.pk %}" class="btn">Edit</a>
+        <a href="{% url 'delete_book' book.pk %}" class="btn">Delete</a>
+    </p>
+{% endif %}
+{% endblock %}

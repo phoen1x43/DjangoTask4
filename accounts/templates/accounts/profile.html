@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Books</h2>
+
+<p>
+    <a href="{% url 'add_book' %}" class="btn">+ Add New Book</a>
+</p>
+
+{% if books %}
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't added any books yet.</p>
+{% endif %}
+{% endblock %}

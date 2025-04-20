@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Books</h2>
+<div class="grid">
+    {% for book in books %}
+    <div class="card">
+        <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+        <h3>{{ book.title }}</h3>
+        <a href="{{ book.get_absolute_url }}">View</a>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+.card img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+</style>
+{% endblock %}
